@@ -25,6 +25,8 @@
 // });
 
 let form2 = document.getElementById('form');
+// let p = document.getElementById('results')
+// let userInput = document.getElementById('sentence')
 
 function pigLatin(text) {
   
@@ -46,16 +48,24 @@ function pigLatin(text) {
       let count = 0;
 
       if (word[0] === 'q' && word[1] === 'u'){
+
         count = 2;
         cons = 'qu';
+
       } else { 
+
         for (let i=0; !vowels.includes(word[i]); i++) {
+
           if (word[i] === 'q') {
+
             break;
+
           } else {
+
             count++;
             cons += word[i];
-            console.log(cons)
+          
+
           }
 
       }
@@ -63,14 +73,21 @@ function pigLatin(text) {
 
       end += (word.slice(count++));
       // cons = end.concat(cons + 'ay')
-      output.push(end + cons + 'ay')
       console.log(output)
-
+      output.push(end + cons + 'ay')
+      
 
     }
-    console.log(output)
+    
     });
+    return output
   
 }
 
-//form2.addEventListener("submit", )
+form2.addEventListener("submit", function(event) {
+  let p = document.getElementById('results')
+  let userInput = document.getElementById('sentence').value
+  console.log(userInput)
+  event.preventDefault();
+  p.append(pigLatin(userInput).join(' '))
+})
