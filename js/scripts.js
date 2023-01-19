@@ -45,18 +45,27 @@ function pigLatin(text) {
       let end = "";
       let count = 0;
 
-      for (let i=0; !vowels.includes(word[i]); i++) {
-        
-        count++;
-        cons += word[i];
-        console.log(cons)
+      if (word[0] === 'q' && word[1] === 'u'){
+        count = 2;
+        cons = 'qu';
+      } else { 
+        for (let i=0; !vowels.includes(word[i]); i++) {
+          if (word[i] === 'q') {
+            break;
+          } else {
+            count++;
+            cons += word[i];
+            console.log(cons)
+          }
+
       }
+    }
 
       end += (word.slice(count++));
+      // cons = end.concat(cons + 'ay')
       output.push(end + cons + 'ay')
+      console.log(output)
 
-
-    
 
     }
     console.log(output)
