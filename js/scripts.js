@@ -29,32 +29,32 @@ let form2 = document.getElementById('form');
 // let userInput = document.getElementById('sentence')
 
 function pigLatin(text) {
-  
-  const vowels = ['a','e','i','o','u'];
+
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
   const usrTxt = text.split(' ');
   const output = [];
 
   usrTxt.forEach((word) => {
-    
+
     if (vowels.includes(word[0])) {
-      
+
 
       output.push(word.concat("way"));
 
     } else if (!vowels.includes(word[0])) {
-  
+
       let cons = "";
       let end = "";
       let count = 0;
 
-      if (word[0] === 'q' && word[1] === 'u'){
+      if (word[0] === 'q' && word[1] === 'u') {
 
         count = 2;
         cons = 'qu';
 
-      } else { 
+      } else {
 
-        for (let i=0; !vowels.includes(word[i]); i++) {
+        for (let i = 0; !vowels.includes(word[i]); i++) {
 
           if (word[i] === 'q') {
 
@@ -64,27 +64,22 @@ function pigLatin(text) {
 
             count++;
             cons += word[i];
-          
 
           }
-
+        }
       }
-    }
 
       end += (word.slice(count++));
-      // cons = end.concat(cons + 'ay')
-      console.log(output)
       output.push(end + cons + 'ay')
-      
 
     }
-    
-    });
-    return output
-  
+
+  });
+  return output
+
 }
 
-form2.addEventListener("submit", function(event) {
+form2.addEventListener("submit", function (event) {
   let p = document.getElementById('results')
   let userInput = document.getElementById('sentence').value
   console.log(userInput)
